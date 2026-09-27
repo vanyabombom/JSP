@@ -22,20 +22,25 @@
         <link rel="stylesheet" href="<%= contextPath %>/css/style.css">
     </head>
     <body>
-        <header>
-            <a href="<%= contextPath %>/" class="header-brand">Java231Web</a>
-            <nav>
-                <a href="<%= contextPath %>/">Головна</a>
-                <a href="<%= contextPath %>/about">About</a>
-                <a href="<%= contextPath %>/gson">Gson API</a>
-                <a href="<%= contextPath %>/db">DB</a>
-            </nav>
-        </header>
-        <main>
-            <jsp:include page="<%= viewName %>" />
-        </main>
-        <footer>
-            Java 231 Web &bull; Кодування: <b><%= charsetName %></b> &bull; Auth: <b><%= request.getAttribute("auth") %></b>
-        </footer>
+        <div class="container">
+            <header>
+                <a href="<%= contextPath %>/" class="header-brand">Java231Web</a>
+                <nav>
+                    <a href="<%= contextPath %>/">Головна</a>
+                    <a href="<%= contextPath %>/about">About</a>
+                    <a href="<%= contextPath %>/gson">Gson API</a>
+                    <a href="<%= contextPath %>/db">DB</a>
+                    <a href="<%= contextPath %>/back">Back API</a>
+                </nav>
+            </header>
+            <main>
+                <jsp:include page="<%= viewName %>" />
+            </main>
+            <footer>
+                <span>Java 231 Web</span> &bull; 
+                <span>Кодування: <b><%= charsetName %></b></span> &bull; 
+                <span>Auth: <b><%= request.getAttribute("auth") %></b></span>
+            </footer>
+        </div>
     </body>
 </html>

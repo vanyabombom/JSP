@@ -33,9 +33,9 @@
     <% } %>
 
     <h3>Параметричний запит:</h3>
-    <form method="get" action="db" style="display: flex; gap: 8px; align-items: center; margin-bottom: 8px;">
-        <input type="text" name="param" value="<%= param != null ? param : "" %>" style="padding: 6px 10px; border: 1px solid #ccc; border-radius: 4px;" />
-        <button type="submit" style="padding: 6px 14px; cursor: pointer;">Hello</button>
+    <form method="get" action="db" style="display: flex; gap: 8px; align-items: center; margin-bottom: 12px; margin-top: 8px;">
+        <input type="text" name="param" value="<%= param != null ? param : "" %>" placeholder="Введіть параметр..." />
+        <button type="submit">Hello</button>
     </form>
     <p><code><%= paramResult %></code></p>
 </div>
@@ -51,13 +51,13 @@
             <b>Згенерований UUID:</b>
             <span class="timestamp-value"><%= uuid != null ? uuid : "" %></span>
         </div>
-        <p style="margin-top: 10px; color: #166534; font-size: 0.9em;">
-            З'єднання з базою даних успішно встановлено.
+        <p style="margin-top: 10px; color: #065f46; font-size: 0.9em;">
+            ✔ З'єднання з базою даних успішно встановлено.
         </p>
     <% } else { %>
         <div style="margin-top: 12px; color: #b91c1c;">
             <b>Помилка підключення до БД:</b>
-            <p style="margin-top: 6px; font-family: monospace; font-size: 0.9em; background: #fee2e2; padding: 8px; border-radius: 4px;">
+            <p style="margin-top: 6px; font-family: Consolas, monospace; font-size: 0.9em; background: #fef2f2; border: 1px solid #fecaca; padding: 8px 12px; color: #991b1b;">
                 <%= dbError != null ? dbError : "Не вдалося отримати дані" %>
             </p>
         </div>
