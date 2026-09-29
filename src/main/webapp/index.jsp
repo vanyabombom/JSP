@@ -28,6 +28,7 @@
                 <nav>
                     <a href="<%= contextPath %>/">Головна</a>
                     <a href="<%= contextPath %>/about">About</a>
+                    <a href="<%= contextPath %>/privacy">Privacy</a>
                     <a href="<%= contextPath %>/gson">Gson API</a>
                     <a href="<%= contextPath %>/db">DB</a>
                     <a href="<%= contextPath %>/back">Back API</a>

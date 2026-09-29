@@ -20,11 +20,12 @@ public class IocServletsModule extends ServletModule {
         filter("/*").through( CorsFilter.class     );
         filter("/*").through( AuthFilter.class     );
 
-        serve("/"     ).with( HomeServlet.class  );
-        serve("/about").with( AboutServlet.class );
-        serve("/gson" ).with( GsonServlet.class  );
-        serve("/db"   ).with( DbServlet.class    );
-        serve("/back" ).with( BackServlet.class  );
+        serve("/"       ).with( HomeServlet.class    );
+        serve("/about"  ).with( AboutServlet.class   );
+        serve("/privacy").with( PrivacyServlet.class );
+        serve("/gson"   ).with( GsonServlet.class    );
+        serve("/db"     ).with( DbServlet.class      );
+        serve("/back"   ).with( BackServlet.class    );
         serve("/user", "/user/*", "/User/*").with( UserServlet.class );
     }
 
