@@ -81,6 +81,15 @@ public class BackServlet extends HttpServlet {
             singleParams.put(entry.getKey(), String.join(", ", entry.getValue()));
         }
 
+        // Логування в консоль сервера (видиме в IDE)
+        if ("GET".equalsIgnoreCase(method)) {
+            System.out.printf("[%s] %s | Query: %s | Params: %s%n",
+                    method, req.getRequestURI(), req.getQueryString(), singleParams);
+        } else {
+            System.out.printf("[%s] %s | Body: %s%n",
+                    method, req.getRequestURI(), body);
+        }
+
         Map<String, String> headers = new LinkedHashMap<>();
         Enumeration<String> headerNames = req.getHeaderNames();
         if (headerNames != null) {
