@@ -3,90 +3,58 @@
         <%@page import="step.learning.java231web.data.dto.ProductSection" %>
             <%@page import="step.learning.java231web.data.models.AdminProductViewModel" %>
                 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-                    <% AdminProductViewModel viewModel=(AdminProductViewModel) request.getAttribute("viewModel"); String
-                        formMessage=(String) request.getAttribute("formMessage"); String formError=(String)
-                        request.getAttribute("formError"); String savedFileName=(String)
-                        request.getAttribute("savedFileName"); String formType=(String)
-                        request.getAttribute("formType"); @SuppressWarnings("unchecked") Map<String, String> formFields
-                        = (Map<String, String>) request.getAttribute("formFields");
-                            @SuppressWarnings("unchecked")
-                            Map<String, String> validationErrors = (Map<String, String>)
-                                    request.getAttribute("validationErrors");
+                    <%
+    AdminProductViewModel viewModel = (AdminProductViewModel) request.getAttribute("viewModel");
+    String formMessage = (String) request.getAttribute("formMessage");
+    String formError = (String) request.getAttribute("formError");
+    String savedFileName = (String) request.getAttribute("savedFileName");
+    String formType = (String) request.getAttribute("formType");
+    @SuppressWarnings("unchecked")
+    Map<String, String> formFields = (Map<String, String>) request.getAttribute("formFields");
+    @SuppressWarnings("unchecked")
+    Map<String, String> validationErrors = (Map<String, String>) request.getAttribute("validationErrors");
 
-                                    boolean isVersionForm = "version".equalsIgnoreCase(formType);
-                                    boolean isProductForm = "product".equalsIgnoreCase(formType) || (!isVersionForm &&
-                                    formFields != null && formFields.containsKey("product-section-id"));
+    boolean isVersionForm = "version".equalsIgnoreCase(formType);
+    boolean isProductForm = "product".equalsIgnoreCase(formType) || (!isVersionForm && formFields != null && formFields.containsKey("product-section-id"));
 
-                                    // Version form values
-                                    String verProductId = (isVersionForm && formFields != null) ?
-                                    formFields.get("product-id") : null;
-                                    String verTitle = (isVersionForm && formFields != null &&
-                                    formFields.get("product-title") != null) ? formFields.get("product-title") : "";
-                                    String verDesc = (isVersionForm && formFields != null &&
-                                    formFields.get("product-description") != null) ?
-                                    formFields.get("product-description") : "";
-                                    String verSlug = (isVersionForm && formFields != null &&
-                                    formFields.get("product-slug") != null) ? formFields.get("product-slug") : "";
-                                    String verPrice = (isVersionForm && formFields != null &&
-                                    formFields.get("product-price") != null) ? formFields.get("product-price") : "";
-                                    String verStock = (isVersionForm && formFields != null &&
-                                    formFields.get("product-stock") != null) ? formFields.get("product-stock") : "";
-                                    String verOrder = (isVersionForm && formFields != null &&
-                                    formFields.get("product-order") != null) ? formFields.get("product-order") : "";
+    /* Version form values */
+    String verProductId = (isVersionForm && formFields != null) ? formFields.get("product-id") : null;
+    String verTitle = (isVersionForm && formFields != null && formFields.get("product-title") != null) ? formFields.get("product-title") : "";
+    String verDesc = (isVersionForm && formFields != null && formFields.get("product-description") != null) ? formFields.get("product-description") : "";
+    String verSlug = (isVersionForm && formFields != null && formFields.get("product-slug") != null) ? formFields.get("product-slug") : "";
+    String verPrice = (isVersionForm && formFields != null && formFields.get("product-price") != null) ? formFields.get("product-price") : "";
+    String verStock = (isVersionForm && formFields != null && formFields.get("product-stock") != null) ? formFields.get("product-stock") : "";
+    String verOrder = (isVersionForm && formFields != null && formFields.get("product-order") != null) ? formFields.get("product-order") : "";
 
-                                    // Version form errors
-                                    String verProductIdErr = (isVersionForm && validationErrors != null) ?
-                                    validationErrors.get("product-id") : null;
-                                    String verTitleErr = (isVersionForm && validationErrors != null) ?
-                                    validationErrors.get("product-title") : null;
-                                    String verDescErr = (isVersionForm && validationErrors != null) ?
-                                    validationErrors.get("product-description") : null;
-                                    String verSlugErr = (isVersionForm && validationErrors != null) ?
-                                    validationErrors.get("product-slug") : null;
-                                    String verPriceErr = (isVersionForm && validationErrors != null) ?
-                                    validationErrors.get("product-price") : null;
-                                    String verStockErr = (isVersionForm && validationErrors != null) ?
-                                    validationErrors.get("product-stock") : null;
-                                    String verOrderErr = (isVersionForm && validationErrors != null) ?
-                                    validationErrors.get("product-order") : null;
-                                    String verImageErr = (isVersionForm && validationErrors != null) ?
-                                    validationErrors.get("product-image") : null;
+    /* Version form errors */
+    String verProductIdErr = (isVersionForm && validationErrors != null) ? validationErrors.get("product-id") : null;
+    String verTitleErr = (isVersionForm && validationErrors != null) ? validationErrors.get("product-title") : null;
+    String verDescErr = (isVersionForm && validationErrors != null) ? validationErrors.get("product-description") : null;
+    String verSlugErr = (isVersionForm && validationErrors != null) ? validationErrors.get("product-slug") : null;
+    String verPriceErr = (isVersionForm && validationErrors != null) ? validationErrors.get("product-price") : null;
+    String verStockErr = (isVersionForm && validationErrors != null) ? validationErrors.get("product-stock") : null;
+    String verOrderErr = (isVersionForm && validationErrors != null) ? validationErrors.get("product-order") : null;
+    String verImageErr = (isVersionForm && validationErrors != null) ? validationErrors.get("product-image") : null;
 
-                                    // Product form values
-                                    String prodSectionId = (isProductForm && formFields != null) ?
-                                    formFields.get("product-section-id") : null;
-                                    String prodTitle = (isProductForm && formFields != null &&
-                                    formFields.get("product-title") != null) ? formFields.get("product-title") : "";
-                                    String prodDesc = (isProductForm && formFields != null &&
-                                    formFields.get("product-description") != null) ?
-                                    formFields.get("product-description") : "";
-                                    String prodSlug = (isProductForm && formFields != null &&
-                                    formFields.get("product-slug") != null) ? formFields.get("product-slug") : "";
-                                    String prodPrice = (isProductForm && formFields != null &&
-                                    formFields.get("product-price") != null) ? formFields.get("product-price") : "";
-                                    String prodStock = (isProductForm && formFields != null &&
-                                    formFields.get("product-stock") != null) ? formFields.get("product-stock") : "";
-                                    String prodOrder = (isProductForm && formFields != null &&
-                                    formFields.get("product-order") != null) ? formFields.get("product-order") : "";
+    /* Product form values */
+    String prodSectionId = (isProductForm && formFields != null) ? formFields.get("product-section-id") : null;
+    String prodTitle = (isProductForm && formFields != null && formFields.get("product-title") != null) ? formFields.get("product-title") : "";
+    String prodDesc = (isProductForm && formFields != null && formFields.get("product-description") != null) ? formFields.get("product-description") : "";
+    String prodSlug = (isProductForm && formFields != null && formFields.get("product-slug") != null) ? formFields.get("product-slug") : "";
+    String prodPrice = (isProductForm && formFields != null && formFields.get("product-price") != null) ? formFields.get("product-price") : "";
+    String prodStock = (isProductForm && formFields != null && formFields.get("product-stock") != null) ? formFields.get("product-stock") : "";
+    String prodOrder = (isProductForm && formFields != null && formFields.get("product-order") != null) ? formFields.get("product-order") : "";
 
-                                    // Product form errors
-                                    String prodSectionIdErr = (isProductForm && validationErrors != null) ?
-                                    validationErrors.get("product-section-id") : null;
-                                    String prodTitleErr = (isProductForm && validationErrors != null) ?
-                                    validationErrors.get("product-title") : null;
-                                    String prodDescErr = (isProductForm && validationErrors != null) ?
-                                    validationErrors.get("product-description") : null;
-                                    String prodSlugErr = (isProductForm && validationErrors != null) ?
-                                    validationErrors.get("product-slug") : null;
-                                    String prodPriceErr = (isProductForm && validationErrors != null) ?
-                                    validationErrors.get("product-price") : null;
-                                    String prodStockErr = (isProductForm && validationErrors != null) ?
-                                    validationErrors.get("product-stock") : null;
-                                    String prodOrderErr = (isProductForm && validationErrors != null) ?
-                                    validationErrors.get("product-order") : null;
-                                    String prodImageErr = (isProductForm && validationErrors != null) ?
-                                    validationErrors.get("product-image") : null;
-                                    %>
+    /* Product form errors */
+    String prodSectionIdErr = (isProductForm && validationErrors != null) ? validationErrors.get("product-section-id") : null;
+    String prodTitleErr = (isProductForm && validationErrors != null) ? validationErrors.get("product-title") : null;
+    String prodDescErr = (isProductForm && validationErrors != null) ? validationErrors.get("product-description") : null;
+    String prodSlugErr = (isProductForm && validationErrors != null) ? validationErrors.get("product-slug") : null;
+    String prodPriceErr = (isProductForm && validationErrors != null) ? validationErrors.get("product-price") : null;
+    String prodStockErr = (isProductForm && validationErrors != null) ? validationErrors.get("product-stock") : null;
+    String prodOrderErr = (isProductForm && validationErrors != null) ? validationErrors.get("product-order") : null;
+    String prodImageErr = (isProductForm && validationErrors != null) ? validationErrors.get("product-image") : null;
+%>
 
                                     <% if (viewModel==null) { %>
                                         <h1 style="color:maroon">Model transfer error</h1>
@@ -274,8 +242,7 @@
                                             <% if (formMessage !=null || viewModel.getOkMessage() !=null) { %>
                                                 <div
                                                     style="background: #f0fdf4; border: 1px solid #86efac; color: #166534; padding: 12px 16px; border-radius: 8px; margin-bottom: 16px;">
-                                                    <b>&#10004; <%= viewModel.getOkMessage() !=null ?
-                                                            viewModel.getOkMessage() : formMessage %></b>
+                                                    <b>&#10004; <%= viewModel.getOkMessage() !=null ? viewModel.getOkMessage() : formMessage %></b>
                                                     <% if (savedFileName !=null) { %>
                                                         <div style="margin-top: 4px; font-size: 0.9rem;">Збережено файл
                                                             у сховищі:
@@ -285,19 +252,15 @@
                                                 </div>
                                                 <% } %>
 
-                                                    <% if (formError !=null || viewModel.getExceptionMessage() !=null) {
-                                                        %>
+                                                    <% if (formError !=null || viewModel.getExceptionMessage() !=null) { %>
                                                         <div
                                                             style="background: #fef2f2; border: 1px solid #fca5a5; color: #991b1b; padding: 12px 16px; border-radius: 8px; margin-bottom: 16px;">
                                                             <b>&#9888; Помилка:</b>
-                                                            <%= viewModel.getExceptionMessage() !=null ?
-                                                                viewModel.getExceptionMessage() : formError %>
-                                                                <% if (validationErrors !=null &&
-                                                                    !validationErrors.isEmpty()) { %>
+                                                            <%= viewModel.getExceptionMessage() !=null ? viewModel.getExceptionMessage() : formError %>
+                                                                <% if (validationErrors !=null && !validationErrors.isEmpty()) { %>
                                                                     <ul
                                                                         style="margin: 8px 0 0 20px; padding: 0; font-size: 0.9rem;">
-                                                                        <% for (Map.Entry<String, String> err :
-                                                                            validationErrors.entrySet()) { %>
+                                                                        <% for (Map.Entry<String, String> err : validationErrors.entrySet()) { %>
                                                                             <li><b>
                                                                                     <%= err.getKey() %>
                                                                                 </b>: <%= err.getValue() %>
@@ -323,25 +286,20 @@
                                                                                         товарну групу:</label>
                                                                                     <select id="product-section-id"
                                                                                         name="product-section-id"
-                                                                                        class="<%= prodSectionIdErr != null ? "
-                                                                                        input-error" : "" %>">
+                                                                                        class="<%= prodSectionIdErr != null ? "input-error" : "" %>">
                                                                                         <option value="">-- Оберіть
                                                                                             товарну групу --</option>
-                                                                                        <% for(ProductSection ps :
-                                                                                            viewModel.getProductSections())
-                                                                                            { %>
+                                                                                        <% for(ProductSection ps : viewModel.getProductSections()) { %>
                                                                                             <option
                                                                                                 value="<%= ps.getId() %>"
-                                                                                                <%=ps.getId().equals(prodSectionId)
-                                                                                                ? "selected" : "" %>>
+                                                                                                <%=ps.getId().equals(prodSectionId) ? "selected" : "" %>>
                                                                                                 <%= ps.getTitle() %>
                                                                                             </option>
                                                                                             <% } %>
                                                                                     </select>
                                                                                     <% if (prodSectionIdErr !=null) { %>
                                                                                         <div class="field-error-msg">
-                                                                                            &#9888; <%= prodSectionIdErr
-                                                                                                %>
+                                                                                            &#9888; <%= prodSectionIdErr %>
                                                                                         </div>
                                                                                         <% } %>
                                                                                 </div>
@@ -353,8 +311,7 @@
                                                                                         id="product-title"
                                                                                         name="product-title"
                                                                                         value="<%= prodTitle %>"
-                                                                                        class="<%= prodTitleErr != null ? "
-                                                                                        input-error" : "" %>"
+                                                                                        class="<%= prodTitleErr != null ? "input-error" : "" %>"
                                                                                     placeholder="Наприклад: Новітній
                                                                                     Ґаджет" />
                                                                                     <% if (prodTitleErr !=null) { %>
@@ -372,8 +329,7 @@
                                                                                         id="product-description"
                                                                                         name="product-description"
                                                                                         value="<%= prodDesc %>"
-                                                                                        class="<%= prodDescErr != null ? "
-                                                                                        input-error" : "" %>"
+                                                                                        class="<%= prodDescErr != null ? "input-error" : "" %>"
                                                                                     placeholder="Детальний опис товару"
                                                                                     />
                                                                                     <% if (prodDescErr !=null) { %>
@@ -389,8 +345,7 @@
                                                                                     <input type="text" id="product-slug"
                                                                                         name="product-slug"
                                                                                         value="<%= prodSlug %>"
-                                                                                        class="<%= prodSlugErr != null ? "
-                                                                                        input-error" : "" %>"
+                                                                                        class="<%= prodSlugErr != null ? "input-error" : "" %>"
                                                                                     placeholder="novitnii-gadget" />
                                                                                     <% if (prodSlugErr !=null) { %>
                                                                                         <div class="field-error-msg">
@@ -408,14 +363,12 @@
                                                                                             id="product-price"
                                                                                             name="product-price"
                                                                                             value="<%= prodPrice %>"
-                                                                                            class="<%= prodPriceErr != null ? "
-                                                                                            input-error" : "" %>"
+                                                                                            class="<%= prodPriceErr != null ? "input-error" : "" %>"
                                                                                         placeholder="15999.00" />
                                                                                         <% if (prodPriceErr !=null) { %>
                                                                                             <div
                                                                                                 class="field-error-msg">
-                                                                                                &#9888; <%= prodPriceErr
-                                                                                                    %>
+                                                                                                &#9888; <%= prodPriceErr %>
                                                                                             </div>
                                                                                             <% } %>
                                                                                     </div>
@@ -427,14 +380,12 @@
                                                                                             id="product-stock"
                                                                                             name="product-stock"
                                                                                             value="<%= prodStock %>"
-                                                                                            class="<%= prodStockErr != null ? "
-                                                                                            input-error" : "" %>"
+                                                                                            class="<%= prodStockErr != null ? "input-error" : "" %>"
                                                                                         placeholder="10" />
                                                                                         <% if (prodStockErr !=null) { %>
                                                                                             <div
                                                                                                 class="field-error-msg">
-                                                                                                &#9888; <%= prodStockErr
-                                                                                                    %>
+                                                                                                &#9888; <%= prodStockErr %>
                                                                                             </div>
                                                                                             <% } %>
                                                                                     </div>
@@ -446,14 +397,12 @@
                                                                                             id="product-order"
                                                                                             name="product-order"
                                                                                             value="<%= prodOrder %>"
-                                                                                            class="<%= prodOrderErr != null ? "
-                                                                                            input-error" : "" %>"
+                                                                                            class="<%= prodOrderErr != null ? "input-error" : "" %>"
                                                                                         placeholder="1" />
                                                                                         <% if (prodOrderErr !=null) { %>
                                                                                             <div
                                                                                                 class="field-error-msg">
-                                                                                                &#9888; <%= prodOrderErr
-                                                                                                    %>
+                                                                                                &#9888; <%= prodOrderErr %>
                                                                                             </div>
                                                                                             <% } %>
                                                                                     </div>
@@ -465,8 +414,7 @@
                                                                                     <input type="file"
                                                                                         id="product-image"
                                                                                         name="product-image"
-                                                                                        class="<%= prodImageErr != null ? "
-                                                                                        input-error" : "" %>" />
+                                                                                        class="<%= prodImageErr != null ? "input-error" : "" %>" />
                                                                                     <% if (prodImageErr !=null) { %>
                                                                                         <div class="field-error-msg">
                                                                                             &#9888; <%= prodImageErr %>
@@ -490,32 +438,19 @@
                                                                                         товар:</label>
                                                                                     <select id="version-product-id"
                                                                                         name="product-id"
-                                                                                        class="<%= verProductIdErr != null ? "
-                                                                                        input-error" : "" %>">
+                                                                                        class="<%= verProductIdErr != null ? "input-error" : "" %>">
                                                                                         <option value="">-- Оберіть
                                                                                             товар зі списку --</option>
-                                                                                        <% if (viewModel.getProducts()
-                                                                                            !=null &&
-                                                                                            !viewModel.getProducts().isEmpty())
-                                                                                            { for(Product p :
-                                                                                            viewModel.getProducts()) {
-                                                                                            %>
+                                                                                        <% if (viewModel.getProducts() !=null && !viewModel.getProducts().isEmpty()) { for(Product p : viewModel.getProducts()) { %>
                                                                                             <option
                                                                                                 value="<%= p.getId() %>"
-                                                                                                <%=p.getId().equals(verProductId)
-                                                                                                ? "selected" : "" %>>
+                                                                                                <%=p.getId().equals(verProductId) ? "selected" : "" %>>
                                                                                                 <%= p.getTitle() %>
                                                                                             </option>
-                                                                                            <% } } else if
-                                                                                                (viewModel.getProductSections()
-                                                                                                !=null) {
-                                                                                                for(ProductSection ps :
-                                                                                                viewModel.getProductSections())
-                                                                                                { %>
+                                                                                            <% } } else if (viewModel.getProductSections() !=null) { for(ProductSection ps : viewModel.getProductSections()) { %>
                                                                                                 <option
                                                                                                     value="<%= ps.getId() %>"
-                                                                                                    <%=ps.getId().equals(verProductId)
-                                                                                                    ? "selected" : "" %>
+                                                                                                    <%=ps.getId().equals(verProductId) ? "selected" : "" %>
                                                                                                     >
                                                                                                     <%= ps.getTitle() %>
                                                                                                 </option>
@@ -523,8 +458,7 @@
                                                                                     </select>
                                                                                     <% if (verProductIdErr !=null) { %>
                                                                                         <div class="field-error-msg">
-                                                                                            &#9888; <%= verProductIdErr
-                                                                                                %>
+                                                                                            &#9888; <%= verProductIdErr %>
                                                                                         </div>
                                                                                         <% } %>
                                                                                 </div>
@@ -537,8 +471,7 @@
                                                                                         id="version-title"
                                                                                         name="product-title"
                                                                                         value="<%= verTitle %>"
-                                                                                        class="<%= verTitleErr != null ? "
-                                                                                        input-error" : "" %>"
+                                                                                        class="<%= verTitleErr != null ? "input-error" : "" %>"
                                                                                     placeholder="Наприклад: Cosmic Red /
                                                                                     256GB" />
                                                                                     <% if (verTitleErr !=null) { %>
@@ -556,8 +489,7 @@
                                                                                         id="version-description"
                                                                                         name="product-description"
                                                                                         value="<%= verDesc %>"
-                                                                                        class="<%= verDescErr != null ? "
-                                                                                        input-error" : "" %>"
+                                                                                        class="<%= verDescErr != null ? "input-error" : "" %>"
                                                                                     placeholder="Особливості цієї версії
                                                                                     товару" />
                                                                                     <% if (verDescErr !=null) { %>
@@ -573,8 +505,7 @@
                                                                                     <input type="text" id="version-slug"
                                                                                         name="product-slug"
                                                                                         value="<%= verSlug %>"
-                                                                                        class="<%= verSlugErr != null ? "
-                                                                                        input-error" : "" %>"
+                                                                                        class="<%= verSlugErr != null ? "input-error" : "" %>"
                                                                                     placeholder="cosmic-red" />
                                                                                     <% if (verSlugErr !=null) { %>
                                                                                         <div class="field-error-msg">
@@ -592,14 +523,12 @@
                                                                                             id="version-price"
                                                                                             name="product-price"
                                                                                             value="<%= verPrice %>"
-                                                                                            class="<%= verPriceErr != null ? "
-                                                                                            input-error" : "" %>"
+                                                                                            class="<%= verPriceErr != null ? "input-error" : "" %>"
                                                                                         placeholder="16999.00" />
                                                                                         <% if (verPriceErr !=null) { %>
                                                                                             <div
                                                                                                 class="field-error-msg">
-                                                                                                &#9888; <%= verPriceErr
-                                                                                                    %>
+                                                                                                &#9888; <%= verPriceErr %>
                                                                                             </div>
                                                                                             <% } %>
                                                                                     </div>
@@ -611,14 +540,12 @@
                                                                                             id="version-stock"
                                                                                             name="product-stock"
                                                                                             value="<%= verStock %>"
-                                                                                            class="<%= verStockErr != null ? "
-                                                                                            input-error" : "" %>"
+                                                                                            class="<%= verStockErr != null ? "input-error" : "" %>"
                                                                                         placeholder="5" />
                                                                                         <% if (verStockErr !=null) { %>
                                                                                             <div
                                                                                                 class="field-error-msg">
-                                                                                                &#9888; <%= verStockErr
-                                                                                                    %>
+                                                                                                &#9888; <%= verStockErr %>
                                                                                             </div>
                                                                                             <% } %>
                                                                                     </div>
@@ -630,14 +557,12 @@
                                                                                             id="version-order"
                                                                                             name="product-order"
                                                                                             value="<%= verOrder %>"
-                                                                                            class="<%= verOrderErr != null ? "
-                                                                                            input-error" : "" %>"
+                                                                                            class="<%= verOrderErr != null ? "input-error" : "" %>"
                                                                                         placeholder="1" />
                                                                                         <% if (verOrderErr !=null) { %>
                                                                                             <div
                                                                                                 class="field-error-msg">
-                                                                                                &#9888; <%= verOrderErr
-                                                                                                    %>
+                                                                                                &#9888; <%= verOrderErr %>
                                                                                             </div>
                                                                                             <% } %>
                                                                                     </div>
@@ -649,8 +574,7 @@
                                                                                     <input type="file"
                                                                                         id="version-image"
                                                                                         name="product-image"
-                                                                                        class="<%= verImageErr != null ? "
-                                                                                        input-error" : "" %>" />
+                                                                                        class="<%= verImageErr != null ? "input-error" : "" %>" />
                                                                                     <% if (verImageErr !=null) { %>
                                                                                         <div class="field-error-msg">
                                                                                             &#9888; <%= verImageErr %>
