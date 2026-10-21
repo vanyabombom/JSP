@@ -6,28 +6,28 @@
     <h2>Випробування HTTP-методів (/back)</h2>
     <p>Тестування передачі даних усіма HTTP-методами запиту до сервлета <code>BackServlet</code>.</p>
 
-    <div style="margin-top: 14px;">
+    <div style="margin-top: 16px;">
         <label for="requestPayload" style="display: block; font-weight: bold; margin-bottom: 6px;">
             Тіло запиту / Параметр:
         </label>
         <input type="text" id="requestPayload" value="Hello HTTP" 
-               style="width: 100%; max-width: 450px; font-family: Consolas, monospace;" />
+               style="width: 100%; max-width: 450px; padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px; font-family: monospace;" />
     </div>
 
     <div style="margin-top: 16px; display: flex; gap: 8px; flex-wrap: wrap;">
-        <button id="btnGet" onclick="sendRequest('GET')" style="background: #0369a1; color: white;">
+        <button id="btnGet" onclick="sendRequest('GET')" style="padding: 8px 16px; cursor: pointer; border-radius: 4px; border: 1px solid #0284c7; background: #0284c7; color: white; font-weight: bold;">
             GET
         </button>
-        <button id="btnPost" onclick="sendRequest('POST')" style="background: #047857; color: white;">
+        <button id="btnPost" onclick="sendRequest('POST')" style="padding: 8px 16px; cursor: pointer; border-radius: 4px; border: 1px solid #16a34a; background: #16a34a; color: white; font-weight: bold;">
             POST
         </button>
-        <button id="btnPut" onclick="sendRequest('PUT')" style="background: #c2410c; color: white;">
+        <button id="btnPut" onclick="sendRequest('PUT')" style="padding: 8px 16px; cursor: pointer; border-radius: 4px; border: 1px solid #ea580c; background: #ea580c; color: white; font-weight: bold;">
             PUT
         </button>
-        <button id="btnPatch" onclick="sendRequest('PATCH')" style="background: #6d28d9; color: white;">
+        <button id="btnPatch" onclick="sendRequest('PATCH')" style="padding: 8px 16px; cursor: pointer; border-radius: 4px; border: 1px solid #7c3aed; background: #7c3aed; color: white; font-weight: bold;">
             PATCH
         </button>
-        <button id="btnDelete" onclick="sendRequest('DELETE')" style="background: #b91c1c; color: white;">
+        <button id="btnDelete" onclick="sendRequest('DELETE')" style="padding: 8px 16px; cursor: pointer; border-radius: 4px; border: 1px solid #dc2626; background: #dc2626; color: white; font-weight: bold;">
             DELETE
         </button>
     </div>
@@ -36,12 +36,12 @@
 <div class="card" style="margin-top: 16px;">
     <h3>Результат запиту:</h3>
     <div style="margin-top: 8px;">
-        <p><b>Останній виконаний метод:</b> <span id="resMethod" style="font-family: Consolas, monospace; font-weight: bold; color: #0f766e;">-</span></p>
-        <p><b>Статус відповіді:</b> <span id="resStatus" style="font-family: Consolas, monospace;">-</span></p>
+        <p><b>Останній виконаний метод:</b> <span id="resMethod" style="font-family: monospace; font-weight: bold;">-</span></p>
+        <p><b>Статус відповіді:</b> <span id="resStatus" style="font-family: monospace;">-</span></p>
         <p style="margin-top: 8px;"><b>Передані дані:</b></p>
-        <pre id="sentData" style="min-height: 24px;">-</pre>
+        <pre id="sentData" style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 10px; border-radius: 4px; font-size: 0.9em; min-height: 24px; overflow-x: auto;">-</pre>
         <p style="margin-top: 8px;"><b>Отримана відповідь сервера (JSON):</b></p>
-        <pre id="resBody" style="min-height: 48px;">Натисніть будь-яку кнопку вище для відправки запиту.</pre>
+        <pre id="resBody" style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 10px; border-radius: 4px; font-size: 0.9em; min-height: 48px; overflow-x: auto;">Натисніть будь-яку кнопку вище для відправки запиту.</pre>
     </div>
 </div>
 
