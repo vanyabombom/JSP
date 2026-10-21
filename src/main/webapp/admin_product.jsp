@@ -74,7 +74,7 @@
                                                     background: #ffffff;
                                                     border: 1px solid #e2e8f0;
                                                     padding: 24px;
-                                                    border-radius: 10px;
+                                                    border-radius: 12px;
                                                     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
                                                     box-sizing: border-box;
                                                 }
@@ -125,7 +125,7 @@
                                                     color: #1e293b !important;
                                                     background-color: #ffffff !important;
                                                     border: 1px solid #cbd5e1 !important;
-                                                    border-radius: 6px !important;
+                                                    border-radius: 8px !important;
                                                     outline: none !important;
                                                     transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
                                                 }
@@ -133,8 +133,8 @@
                                                 .admin-form input:focus,
                                                 .admin-form select:focus,
                                                 .admin-form textarea:focus {
-                                                    border-color: #0284c7 !important;
-                                                    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.18) !important;
+                                                    border-color: #4f46e5 !important;
+                                                    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15) !important;
                                                 }
 
                                                 .admin-form .input-error {
@@ -200,16 +200,16 @@
                                                     font-size: 0.95rem !important;
                                                     font-weight: 600 !important;
                                                     color: #ffffff !important;
-                                                    background-color: #0284c7 !important;
+                                                    background-color: #4f46e5 !important;
                                                     border: none !important;
-                                                    border-radius: 6px !important;
+                                                    border-radius: 8px !important;
                                                     cursor: pointer !important;
-                                                    box-shadow: 0 2px 4px rgba(2, 132, 199, 0.25) !important;
+                                                    box-shadow: 0 2px 4px rgba(79, 70, 229, 0.25) !important;
                                                     transition: background-color 0.15s ease, transform 0.1s ease !important;
                                                 }
 
                                                 .admin-form button:hover {
-                                                    background-color: #0369a1 !important;
+                                                    background-color: #4338ca !important;
                                                 }
 
                                                 .admin-form button:active {
@@ -241,7 +241,7 @@
 
                                             <% if (formMessage !=null || viewModel.getOkMessage() !=null) { %>
                                                 <div
-                                                    style="background: #f0fdf4; border: 1px solid #86efac; color: #166534; padding: 12px 16px; border-radius: 8px; margin-bottom: 16px;">
+                                                    style="background: #f0fdf4; border: 1px solid #bbf7d0; border-left: 5px solid #16a34a; color: #15803d; padding: 14px 18px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.08);">
                                                     <b>&#10004; <%= viewModel.getOkMessage() !=null ? viewModel.getOkMessage() : formMessage %></b>
                                                     <% if (savedFileName !=null) { %>
                                                         <div style="margin-top: 4px; font-size: 0.9rem;">Збережено файл
@@ -254,7 +254,7 @@
 
                                                     <% if (formError !=null || viewModel.getExceptionMessage() !=null) { %>
                                                         <div
-                                                            style="background: #fef2f2; border: 1px solid #fca5a5; color: #991b1b; padding: 12px 16px; border-radius: 8px; margin-bottom: 16px;">
+                                                            style="background: #fff5f5; border: 1px solid #fecaca; border-left: 5px solid #dc2626; color: #991b1b; padding: 14px 18px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(220, 38, 38, 0.08);">
                                                             <b>&#9888; Помилка:</b>
                                                             <%= viewModel.getExceptionMessage() !=null ? viewModel.getExceptionMessage() : formError %>
                                                                 <% if (validationErrors !=null && !validationErrors.isEmpty()) { %>
